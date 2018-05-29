@@ -28,13 +28,13 @@
         </field>
     </record>
 
-    <act_window id="join_receipts_wizard_action"
-            name="Validate Receipts"
-            src_model="stock.picking"
+    <act_window name="Validate Receipts"
             res_model="stock.receipt.join"
-            view_type="form" view_mode="form"
-            key2="client_action_multi" target="new"
-            />
+            src_model="stock.picking"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_view_stock_receipt_join"/>
 
     <!-- Action of Validate Receipt -->
     <record id="action_join_receipts" model="ir.actions.act_window">
