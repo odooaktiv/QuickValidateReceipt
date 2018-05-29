@@ -31,7 +31,7 @@ class StockReceiptJoin(models.TransientModel):
                                      line.picking_id.partner_id.id,
                                      'location_id': line.location_id.id,
                                      'product_uom_qty': line.product_uom_qty,
-                                     'quantity': line.quantity_done
+                                     'quantity': line.product_uom_qty
                                      }))
         res.update({'receipt_ids': lines})
         return res
@@ -43,26 +43,24 @@ class StockReceiptJoin(models.TransientModel):
             selection and it will also validate the picking and create a
             backorder if the delivered qty is less than initial qty
         '''
-        move_line_obj = self.env['stock.move.line']
+        move_obj = self.env['stock.move']
         pickings = []
+
         for line in self.receipt_ids:
             if line.move_id.picking_id not in pickings:
                 pickings.append((line.move_id.picking_id))
             line.move_id.write({'location_id': line.location_id.id,
-                                'quantity_done': line.quantity})
-            move_lines = move_line_obj.search([(
-                'move_id', '=', line.move_id.id)])
-            for move_line in move_lines:
-                move_line.write({'location_id': line.location_id.id,
-                                 'qty_done': line.quantity})
+                                'product_uom_qty': line.quantity
+            })
+
         for picking in pickings:
-            # validating the picking
-            validate = picking.button_validate()
+            validate = picking.do_new_transfer()
             if validate and validate.get('res_id', False):
-                if validate['res_model'] == 'stock.overprocessed.transfer':
-                    wiz_id = self.env['stock.overprocessed.transfer']. \
+
+                if validate['res_model'] == 'stock.immediate.transfer':
+                    wiz_id = self.env['stock.immediate.transfer']. \
                         browse(validate['res_id'])
-                    wiz_id.action_confirm()
+                    wiz_id.process()
                 # backorder creation
                 elif validate['res_model'] == 'stock.backorder.confirmation':
                     wiz_id = self.env['stock.backorder.confirmation']. \
