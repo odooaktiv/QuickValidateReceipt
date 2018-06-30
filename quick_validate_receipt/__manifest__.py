@@ -17,7 +17,7 @@
     'data': [
         'wizard/stock_receipt_wizard_view.xml',
     ],
-    'images':  ['static/description/banner.jpg'],
+    'images': ['static/description/banner.jpg'],
     'auto_install': False,
     'installable': True,
     'application': False
