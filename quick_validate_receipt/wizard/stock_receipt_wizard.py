@@ -43,7 +43,6 @@ class StockReceiptJoin(models.TransientModel):
             selection and it will also validate the picking and create a
             backorder if the delivered qty is less than initial qty
         '''
-        move_obj = self.env['stock.move']
         pickings = []
 
         for line in self.receipt_ids:
@@ -51,7 +50,7 @@ class StockReceiptJoin(models.TransientModel):
                 pickings.append((line.move_id.picking_id))
             line.move_id.write({'location_id': line.location_id.id,
                                 'product_uom_qty': line.quantity
-            })
+                                })
 
         for picking in pickings:
             validate = picking.do_new_transfer()
