@@ -3,7 +3,8 @@
 {
     'name': 'Quick Validate Receipt',
     'category': 'Stock',
-    'version': '1.1',
+    'version': '11.0.1.0.0',
+    'license': 'AGPL-3',
     'website': 'http://www.aktivsoftware.com',
     'author': 'Aktiv Software',
     'license': 'AGPL-3',
