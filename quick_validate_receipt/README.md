@@ -1,4 +1,4 @@
-Odoo 10.0 Community 
+Odoo 10.0 (Both Edition) 
 
 Installation 
 ============
