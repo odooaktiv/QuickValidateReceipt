@@ -3,7 +3,7 @@
 {
     'name': 'Quick Validate Receipt',
     'category': 'Stock',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'summary': 'This module will validate multiple receipts with updated received quantity and source location.',
     'website': 'http://www.aktivsoftware.com',

@@ -6,6 +6,7 @@ from odoo.exceptions import UserError
 
 class StockReceiptJoin(models.TransientModel):
     _name = 'stock.receipt.join'
+    _description = 'Stock Receipt Join'
 
     receipt_ids = fields.One2many('stock.receipt.lines',
                                   'stock_receipt_join_id', 'Receipt Line')
@@ -72,6 +73,7 @@ class StockReceiptJoin(models.TransientModel):
 
 class StockReceiptLines(models.TransientModel):
     _name = 'stock.receipt.lines'
+    _description = 'Stock Receipt Lines'
 
     stock_receipt_join_id = fields.Many2one('stock.receipt.join')
     picking_id = fields.Many2one('stock.picking')
