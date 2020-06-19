@@ -1,4 +1,4 @@
-Odoo 12.0 (Both Edition) 
+Odoo 13.0 (Both Edition) 
 
 Installation 
 ============

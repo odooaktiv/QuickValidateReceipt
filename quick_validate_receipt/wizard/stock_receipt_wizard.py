@@ -37,7 +37,6 @@ class StockReceiptJoin(models.TransientModel):
         res.update({'receipt_ids': lines})
         return res
 
-    @api.multi
     def join_receipt(self):
         '''
             this method will update source location and qty as per the user's
