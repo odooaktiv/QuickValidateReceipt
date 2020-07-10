@@ -2,7 +2,7 @@
 
 {
     'name': 'Quick Validate Receipt',
-    'category': 'Stock',
+    'category': 'Warehouse',
     'version': '09.0.1.0.0',
     'summary': 'This module will validate multiple receipts with updated received quantity and source location.',
     'website': 'http://www.aktivsoftware.com',
